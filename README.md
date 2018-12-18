@@ -8,12 +8,14 @@ License: BSD 3-Clause
 ---
 Usage:
 
+```
     ews_tool.exe -CerValidation <Yes or No> -ExchangeVersion <Version> -u <Username> -p <Password> -ewsPath <EWS url> -Mode <command> -<Command> <command>
     
     ews_tool.exe -CerValidation <Yes or No> -ExchangeVersion <Version> -u <Username> -p <Password> -AutodiscoverUrl <Autodiscover url> -Mode <command> -<Command> <command>
     
     ews_tool.exe -CerValidation <Yes or No> -ExchangeVersion <Version> -use the default credentials -ewsPath <EWS url> -Mode <command> -<Command> <command>
-    
+``` 
+ 
 - CerValidation:
 
     Yes/No  
