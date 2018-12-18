@@ -6,7 +6,49 @@ Author: 3gstudent
 License: BSD 3-Clause
 
 ---
+Usage:
 
+    ews_tool.exe -CerValidation <Yes or No> -ExchangeVersion <Version> -u <Username> -p <Password> -ewsPath <EWS url> -Mode <command> -<Command> <command>
+    
+    ews_tool.exe -CerValidation <Yes or No> -ExchangeVersion <Version> -u <Username> -p <Password> -AutodiscoverUrl <Autodiscover url> -Mode <command> -<Command> <command>
+    
+    ews_tool.exe -CerValidation <Yes or No> -ExchangeVersion <Version> -use the default credentials -ewsPath <EWS url> -Mode <command> -<Command> <command>
+    
+- CerValidation:
+
+    Yes/No
+    
+-ExchangeVersion:
+
+    Exchange2007_SP1/Exchange2010/Exchange2010_SP1/Exchange2010_SP2/Exchange2013/Exchange2013_SP1
+    
+-ewsPath/-AutodiscoverUrl:
+
+    You should choose one 
+    
+-Mode:
+
+    ListMail/ListUnreadMail/ListFolder -Foler:    
+        Inbox/Drafts/SentItems/DeletedItems/Outbox/JunkEmail 
+        
+    SaveAttachment/ClearAllAttachment/DeleteMail/ViewMail -Id    
+        You can get the Id by using ListMail/ListUnreadMail
+        
+    AddAttachment/DeleteAttachment -Id -AttachmentFile
+        You need set 2 parameters
+        
+    ListMailofFolder/ListUnreadMailofFolder -Id
+        You can get the Id by using ListFolder
+        
+    SearchMail -String
+    
+        search folder:Inbox/Drafts/SentItems/DeletedItems/Outbox/JunkEmail
+        search location:Subject/Attachment name/MessageBody
+        
+    ReadXML -Path
+        use EWS SOAP to send command
+  
+  
 The following functions are currently supported:
 
 - Support EWS Managed API and EWS SOAP XML message
