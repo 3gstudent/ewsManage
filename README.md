@@ -1,6 +1,9 @@
 # ewsManage
 My exercise of using Exchange Web Service(EWS)
 
+Author: 3gstudent
+License: BSD 3-Clause
+
 The following functions are currently supported:
 
 - Support EWS Managed API and EWS SOAP XML message
