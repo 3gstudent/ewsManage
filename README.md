@@ -16,7 +16,7 @@ Usage:
     ews_tool.exe -CerValidation <Yes or No> -ExchangeVersion <Version> -use the default credentials -ewsPath <EWS url> -Mode <command> -<Command> <command>
 ``` 
  
-- CerValidation:
+-CerValidation:
 
     Yes/No  
     
