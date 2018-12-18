@@ -27,7 +27,8 @@ Usage:
     You should choose one    
     
 -Mode:
-    ListMail/ListUnreadMail/ListFolder -Foler:    
+
+    ListMail/ListUnreadMail/ListFolder -Foler:       
         Inbox/Drafts/SentItems/DeletedItems/Outbox/JunkEmail  
         
     SaveAttachment/ClearAllAttachment/DeleteMail/ViewMail -Id    
