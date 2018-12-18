@@ -32,3 +32,31 @@ Location to support queries and operations:
 - Deleted Items
 - Outbox
 - Junk Email
+
+eg.
+
+ewsManage.exe -CerValidation Yes -ExchangeVersion Exchange2013_SP1 -u test1 -p test123! -ewsPath https://test.com/ews/Exchange.asmx -Mode ListUnreadMail -Folder Inbox
+
+ewsManage.exe -CerValidation No -ExchangeVersion Exchange2013_SP1 -use the default credentials -AutodiscoverUrl test1@test.com -Mode ListMail -Folder SentItems
+
+ewsManage.exe -CerValidation No -ExchangeVersion Exchange2013_SP1 -u test1 -p test123! -ewsPath https://test.com/ews/Exchange.asmx -Mode ListFolder -Folder Inbox
+
+ewsManage.exe -CerValidation No -ExchangeVersion Exchange2013_SP1 -u test1 -p test123! -ewsPath https://test.com/ews/Exchange.asmx -Mode ListMailofFolder -Id AAMaADFlMjRjMdM2LTgxZTUtNGRmZC05ZDQyLTMzNDFlMzBmZWY1NwAzAAAAAAAR9UOK286vT6HjUgukBQGmAQBHzR2O8KNmTcffGwlY0A76AAAAADfqAAA=
+
+ewsManage.exe -CerValidation No -ExchangeVersion Exchange2013_SP1 -u test1 -p test123! -ewsPath https://test.com/ews/Exchange.asmx -Mode ExportMail -Folder Inbox
+
+ewsManage.exe -CerValidation No -ExchangeVersion Exchange2013_SP1 -u test1 -p test123! -ewsPath https://test.com/ews/Exchange.asmx -Mode SaveAttachment -Id AAMzADFlMjRjMzM3LTgxZTUzNGRmZC25ZDQyLTMaNDFlMzBwZWY1NwBGAAAAAAAR8UOK236vT6HjUnujBQGmBwBHzR1O8KNmTrjfGwlY0A56AAAAAAEKAABHzR1O8KNmTrjfGzlY2A75AAAAABxFAAA=
+
+ewsManage.exe -CerValidation No -ExchangeVersion Exchange2013_SP1 -u test1 -p test123! -ewsPath https://test.com/ews/Exchange.asmx -Mode AddAttachment -Id AAMzADFlMjRjMzM3LTgxZTUzNGRmZC25ZDQyLTMaNDFlMzBwZWY1NwBGAAAAAAAR8UOK236vT6HjUnujBQGmBwBHzR1O8KNmTrjfGwlY0A56AAAAAAEKAABHzR1O8KNmTrjfGzlY2A75AAAAABxFAAA= -AttachmentFile 1.txt
+
+ewsManage.exe -CerValidation No -ExchangeVersion Exchange2013_SP1 -u test1 -p test123! -ewsPath https://test.com/ews/Exchange.asmx -Mode DeleteAttachment -Id AAMzADFlMjRjMzM3LTgxZTUzNGRmZC25ZDQyLTMaNDFlMzBwZWY1NwBGAAAAAAAR8UOK236vT6HjUnujBQGmBwBHzR1O8KNmTrjfGwlY0A56AAAAAAEKAABHzR1O8KNmTrjfGzlY2A75AAAAABxFAAA= -AttachmentFile 1.txt
+
+ewsManage.exe -CerValidation No -ExchangeVersion Exchange2013_SP1 -u test1 -p test123! -ewsPath https://test.com/ews/Exchange.asmx -Mode ClearAllAttachment -Id AAMzADFlMjRjMzM3LTgxZTUzNGRmZC25ZDQyLTMaNDFlMzBwZWY1NwBGAAAAAAAR8UOK236vT6HjUnujBQGmBwBHzR1O8KNmTrjfGwlY0A56AAAAAAEKAABHzR1O8KNmTrjfGzlY2A75AAAAABxFAAA=
+
+ewsManage.exe -CerValidation No -ExchangeVersion Exchange2013_SP1 -u test1 -p test123! -ewsPath https://test.com/ews/Exchange.asmx -Mode SearchMail -String vpn
+
+ewsManage.exe -CerValidation No -ExchangeVersion Exchange2013_SP1 -u test1 -p test123! -ewsPath https://test.com/ews/Exchange.asmx -Mode DeleteMail -Id AAMzADFlMjRjMzM3LTgxZTUzNGRmZC25ZDQyLTMaNDFlMzBwZWY1NwBGAAAAAAAR8UOK236vT6HjUnujBQGmBwBHzR1O8KNmTrjfGwlY0A56AAAAAAEKAABHzR1O8KNmTrjfGzlY2A75AAAAABxFAAA=
+
+ewsManage.exe -CerValidation No -ExchangeVersion Exchange2013_SP1 -u test1 -p test123! -ewsPath https://test.com/ews/Exchange.asmx -Mode ViewMail -Id AAMzADFlMjRjMzM3LTgxZTUzNGRmZC25ZDQyLTMaNDFlMzBwZWY1NwBGAAAAAAAR8UOK236vT6HjUnujBQGmBwBHzR1O8KNmTrjfGwlY0A56AAAAAAEKAABHzR1O8KNmTrjfGzlY2A75AAAAABxFAAA=
+
+ewsManage.exe -CerValidation No -ExchangeVersion Exchange2013_SP1 -u test1 -p test123! -ewsPath https://test.com/ews/Exchange.asmx -Mode ReadXML -Path ews.xml
