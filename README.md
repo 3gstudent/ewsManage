@@ -2,7 +2,10 @@
 My exercise of using Exchange Web Service(EWS)
 
 Author: 3gstudent
+
 License: BSD 3-Clause
+
+---
 
 The following functions are currently supported:
 
