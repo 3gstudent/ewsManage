@@ -166,6 +166,7 @@ eg.
                 try
                 {
                     service.AutodiscoverUrl(AutodiscoverUrlString, RedirectionUrlValidationCallback);
+                    Console.WriteLine("[+]ewsPath:{0}", service.Url);
                 }
                 catch (Exception e)
                 {
