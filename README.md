@@ -5,9 +5,7 @@ Author: 3gstudent
 
 License: BSD 3-Clause
 
-More details:
-
-[Exchange Web Service(EWS)开发指南](https://3gstudent.github.io/3gstudent.github.io/Exchange-Web-Service(EWS)%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/)
+More details: [Exchange Web Service(EWS)开发指南](https://3gstudent.github.io/3gstudent.github.io/Exchange-Web-Service(EWS)%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/)
 
 ---
 Usage:
