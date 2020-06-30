@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Exchange.WebServices.Data;
 using System.Net;
 using System.IO;
@@ -30,19 +30,21 @@ Usage:
 -ewsPath/-AutodiscoverUrl:
     You should choose one 
 -Mode:
-    ListMail/ListUnreadMail/ListFolder -Foler:
+    ListMail/ListUnreadMail/ListFolder/ListHiddenFolder -Foler:
         Inbox/Drafts/SentItems/DeletedItems/Outbox/JunkEmail        
     SaveAttachment/ClearAllAttachment/DeleteMail/ViewMail -Id
         You can get the Id by using ListMail/ListUnreadMail
     AddAttachment/DeleteAttachment -Id -AttachmentFile
         You need set 2 parameters
-    ListMailofFolder/ListUnreadMailofFolder -Id
+    ListMailofFolder/ListUnreadMailofFolder/CreateTestMail -Id
         You can get the Id by using ListFolder
     SearchMail -String
         search folder:Inbox/Drafts/SentItems/DeletedItems/Outbox/JunkEmail
         search location:Subject/Attachment name/MessageBody
     ReadXML -Path
         use EWS SOAP to send command
+    CreateFolderofInbox/CreateHiddenFolderofInbox -Name
+        You need set the folder name
 
 eg.
     ewsManage.exe -CerValidation Yes -ExchangeVersion Exchange2013_SP1 -u test1 -p test123! -ewsPath https://test.com/ews/Exchange.asmx -Mode ListUnreadMail -Folder Inbox
@@ -428,8 +430,151 @@ eg.
                         Console.WriteLine("\r\n");
                         Console.WriteLine("[*]DisplayName:{0}", folder.DisplayName);
                         Console.WriteLine("[*]Id:{0}", folder.Id);
-                        Console.WriteLine("[*]TotalCount:{0}", folder.TotalCount);
                     }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("[!]{0}", e.Message);
+                    Environment.Exit(0);
+                }
+            }
+
+            if ((args[11] == "ListHiddenFolder"))
+            {
+                Console.WriteLine("[+]Mode:{0}", args[11]);
+                try
+                {
+
+                    if ((args[12] != "-Folder"))
+                    {
+                        ShowUsage();
+                        Environment.Exit(0);
+                    }
+                    FolderString = args[13];
+                    Console.WriteLine("[+]Folder:{0}", args[13]);
+
+                    ExtendedPropertyDefinition isHiddenProp = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
+                    FolderView folderView = new FolderView(100);
+                    folderView.PropertySet = new PropertySet(isHiddenProp, FolderSchema.DisplayName);
+                    folderView.Traversal = FolderTraversal.Deep;
+                    FindFoldersResults findFolder = null;
+                    if (args[13] == "Inbox")
+                    {
+                        findFolder = service.FindFolders(WellKnownFolderName.Inbox, new SearchFilter.IsEqualTo(isHiddenProp, true), folderView);
+                    }
+                    else if (args[13] == "Outbox")
+                    {
+                        findFolder = service.FindFolders(WellKnownFolderName.Outbox, new SearchFilter.IsEqualTo(isHiddenProp, true), folderView);
+                    }
+                    else if (args[13] == "DeletedItems")
+                    {
+                        findFolder = service.FindFolders(WellKnownFolderName.DeletedItems, new SearchFilter.IsEqualTo(isHiddenProp, true), folderView);
+                    }
+                    else if (args[13] == "Drafts")
+                    {
+                        findFolder = service.FindFolders(WellKnownFolderName.Drafts, new SearchFilter.IsEqualTo(isHiddenProp, true), folderView);
+                    }
+                    else if (args[13] == "SentItems")
+                    {
+                        findFolder = service.FindFolders(WellKnownFolderName.SentItems, new SearchFilter.IsEqualTo(isHiddenProp, true), folderView);
+                    }
+                    else if (args[13] == "JunkEmail")
+                    {
+                        findFolder = service.FindFolders(WellKnownFolderName.JunkEmail, new SearchFilter.IsEqualTo(isHiddenProp, true), folderView);
+                    }
+                    else
+                    {
+                        ShowUsage();
+                        Environment.Exit(0);
+                    }
+                    foreach (Folder folder in findFolder)
+                    {
+                        Console.WriteLine("\r\n");
+                        Console.WriteLine("[*]DisplayName:{0}", folder.DisplayName);
+                        Console.WriteLine("[*]Id:{0}", folder.Id);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("[!]{0}", e.Message);
+                    Environment.Exit(0);
+                }
+            }
+
+            if ((args[11] == "CreateTestMail"))
+            {
+                Console.WriteLine("[+]Mode:{0}", args[11]);
+                try
+                {
+
+                    if ((args[12] != "-Id"))
+                    {
+                        ShowUsage();
+                        Environment.Exit(0);
+                    }
+                    FolderString = args[13];
+                    Console.WriteLine("[+]FolderId:{0}", args[13]);
+
+                    EmailMessage msg = new EmailMessage(service);
+                    msg.Subject = "test mail";
+                    msg.Save(FolderString);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("[!]{0}", e.Message);
+                    Environment.Exit(0);
+                }
+            }
+
+            if ((args[11] == "CreateFolderofInbox"))
+            {
+                Console.WriteLine("[+]Mode:{0}", args[11]);
+                try
+                {
+
+                    if ((args[12] != "-Name"))
+                    {
+                        ShowUsage();
+                        Environment.Exit(0);
+                    }
+                    FolderString = args[13];
+                    Console.WriteLine("[+]Folder Name:{0}", args[13]);
+                    Folder folder = new Folder(service);
+                    folder.DisplayName = FolderString;
+                    folder.Save(WellKnownFolderName.Inbox);
+                    Console.WriteLine("\r\n");
+                    Console.WriteLine("[+]New FolderId:" + folder.Id);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("[!]{0}", e.Message);
+                    Environment.Exit(0);
+                }
+            }
+
+            if ((args[11] == "CreateHiddenFolderofInbox"))
+            {
+                Console.WriteLine("[+]Mode:{0}", args[11]);
+                try
+                {
+
+                    if ((args[12] != "-Name"))
+                    {
+                        ShowUsage();
+                        Environment.Exit(0);
+                    }
+                    FolderString = args[13];
+                    Console.WriteLine("[+]Hidden Folder Name:{0}", args[13]);
+                    Folder folder = new Folder(service);
+                    folder.DisplayName = FolderString;
+                    folder.Save(WellKnownFolderName.Inbox);
+                    Console.WriteLine("\r\n");
+                    Console.WriteLine("[+]New Hidden FolderId:" + folder.Id);
+                    ExtendedPropertyDefinition isHiddenProp = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
+                    PropertySet propSet = new PropertySet(isHiddenProp);
+                    Folder folderhidden = Folder.Bind(service, folder.Id, propSet);
+                    folderhidden.SetExtendedProperty(isHiddenProp, true);
+                    folderhidden.Update();
                 }
                 catch (Exception e)
                 {
