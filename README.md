@@ -7,6 +7,15 @@ License: BSD 3-Clause
 
 More details: [Exchange Web Service(EWS)开发指南](https://3gstudent.github.io/3gstudent.github.io/Exchange-Web-Service(EWS)%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/)
 
+Update(2020.06.20):
+
+Add new Mode:
+
+- CreateTestMail
+- CreateFolderofInbox
+- CreateHiddenFolderofInbox
+- ListHiddenFolder
+
 ---
 Usage:
 
@@ -32,7 +41,7 @@ Usage:
     
 -Mode:
 
-    ListMail/ListUnreadMail/ListFolder -Foler:       
+    ListMail/ListUnreadMail/ListFolder/ListHiddenFolder -Foler:       
         Inbox/Drafts/SentItems/DeletedItems/Outbox/JunkEmail  
         
     SaveAttachment/ClearAllAttachment/DeleteMail/ViewMail -Id    
@@ -41,7 +50,7 @@ Usage:
     AddAttachment/DeleteAttachment -Id -AttachmentFile
         You need set 2 parameters  
         
-    ListMailofFolder/ListUnreadMailofFolder -Id
+    ListMailofFolder/ListUnreadMailofFolder/CreateTestMail -Id
         You can get the Id by using ListFolder   
         
     SearchMail -String    
@@ -50,7 +59,9 @@ Usage:
         
     ReadXML -Path
         use EWS SOAP to send command
-  
+
+    CreateFolderofInbox/CreateHiddenFolderofInbox -Name
+        You need set the folder name
   
 The following functions are currently supported:
 
