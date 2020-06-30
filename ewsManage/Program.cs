@@ -379,7 +379,7 @@ eg.
                 }
             }
 
-            if ((args[11] == "ListFolder"))
+            else if ((args[11] == "ListFolder"))
             {
                 Console.WriteLine("[+]Mode:{0}", args[11]);
                 try
@@ -439,7 +439,7 @@ eg.
                 }
             }
 
-            if ((args[11] == "ListHiddenFolder"))
+            else if ((args[11] == "ListHiddenFolder"))
             {
                 Console.WriteLine("[+]Mode:{0}", args[11]);
                 try
@@ -501,7 +501,7 @@ eg.
                 }
             }
 
-            if ((args[11] == "CreateTestMail"))
+            else if ((args[11] == "CreateTestMail"))
             {
                 Console.WriteLine("[+]Mode:{0}", args[11]);
                 try
@@ -526,7 +526,7 @@ eg.
                 }
             }
 
-            if ((args[11] == "CreateFolderofInbox"))
+            else if ((args[11] == "CreateFolderofInbox"))
             {
                 Console.WriteLine("[+]Mode:{0}", args[11]);
                 try
@@ -552,7 +552,7 @@ eg.
                 }
             }
 
-            if ((args[11] == "CreateHiddenFolderofInbox"))
+            else if ((args[11] == "CreateHiddenFolderofInbox"))
             {
                 Console.WriteLine("[+]Mode:{0}", args[11]);
                 try
