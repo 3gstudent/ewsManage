@@ -13,10 +13,10 @@ More details: [Exchange Web Service(EWS)开发指南](https://3gstudent.github.i
 
 Add new Mode:
 
-- CreateTestMail
-- CreateFolderofInbox
-- CreateHiddenFolderofInbox
-- ListHiddenFolder
+- CreateTestMail,create a test mail and save it to the target folder.
+- CreateFolderofInbox,create a folder in Inbox.
+- CreateHiddenFolderofInbox,create a hidden folder in Inbox.
+- ListHiddenFolder,list the hidden folders of the target folder.
 
 ---
 Usage:
